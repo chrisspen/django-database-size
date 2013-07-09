@@ -24,6 +24,11 @@ setup(
     packages=[
         'database_size',
     ],
+    package_data = {
+        'database_size': [
+            'sql/*.*',
+        ],
+    },
     classifiers=[
         'Development Status :: 4 - Beta',
         'Framework :: Django',

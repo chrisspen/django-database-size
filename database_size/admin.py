@@ -8,11 +8,14 @@ class DatabaseSizeTableAdmin(admin.ModelAdmin):
         #'id',
         #'site',
         'table_name',
+        'schema_name',
+        'table_owner',
         'size_in_bytes',
     )
     search_fields = (
         'schema_name',
         'table_name',
+        'table_owner',
     )
     readonly_fields = (
     )
