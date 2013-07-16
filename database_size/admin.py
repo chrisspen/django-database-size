@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 import models
+import utils
 
 class DatabaseSizeTableAdmin(admin.ModelAdmin):
     
@@ -11,6 +12,7 @@ class DatabaseSizeTableAdmin(admin.ModelAdmin):
         'schema_name',
         'table_owner',
         'size_in_bytes',
+        'pretty_size',
     )
     search_fields = (
         'schema_name',
@@ -18,6 +20,7 @@ class DatabaseSizeTableAdmin(admin.ModelAdmin):
         'table_owner',
     )
     readonly_fields = (
+        'pretty_size',
     )
     
     def has_delete_permission(self, request, obj=None):
@@ -34,5 +37,12 @@ class DatabaseSizeTableAdmin(admin.ModelAdmin):
     def get_readonly_fields(self, request, obj=None):
         readonly_fields = list(self.readonly_fields)
         return readonly_fields + [f.name for f in self.model._meta.fields]
+    
+    def pretty_size(self, obj=None):
+        if obj is None:
+            return ''
+        return utils.humanize_bytes(obj.size_in_bytes)
+    pretty_size.short_description = 'size'
+    pretty_size.admin_order_field = 'size_in_bytes'
     
 admin.site.register(models.DatabaseSizeTable, DatabaseSizeTableAdmin)
