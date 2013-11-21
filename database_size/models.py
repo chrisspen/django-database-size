@@ -23,7 +23,9 @@ APP_LABEL = StringWithTitle('database_size', 'Database Size')
 
 class DatabaseSizeTable(models.Model):
     
-    id = models.CharField(max_length=1000, primary_key=True)
+    # MySQL can have no more than 255 length...
+    id = models.CharField(max_length=255, primary_key=True)
+    
     schema_name = models.CharField(max_length=500)
     table_name = models.CharField(max_length=500)
     table_owner = models.CharField(max_length=500)
