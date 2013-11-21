@@ -14,6 +14,10 @@ class DatabaseSizeTableAdmin(admin.ModelAdmin):
         'size_in_bytes',
         'pretty_size',
     )
+    list_filter = (
+        'schema_name',
+        'table_owner',
+    )
     search_fields = (
         'schema_name',
         'table_name',
