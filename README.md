@@ -12,7 +12,7 @@ Or via pip with:
     
     sudo pip install django-database-size
 
-Install the appropriate view in /sql (currently only PostgreSQL supported).
+Install the appropriate view in /sql (currently only PostgreSQL and MySQL supported).
 
 Add to your INSTALLED_APPS.
 
