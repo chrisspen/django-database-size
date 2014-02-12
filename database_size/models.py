@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
 class StringWithTitle(str):
     """
@@ -21,7 +22,7 @@ class StringWithTitle(str):
 
 APP_LABEL = StringWithTitle('database_size', 'Database Size')
 
-class DatabaseSizeTable(models.Model):
+class Table(models.Model):
     
     # MySQL can have no more than 255 length...
     id = models.CharField(max_length=255, primary_key=True)
@@ -33,7 +34,9 @@ class DatabaseSizeTable(models.Model):
     
     class Meta:
         managed = False
-        db_table = 'database_size_table'
+        #db_table = 'database_size_table'
+        #db_table = 'database_size_databasesizetable'
         ordering = ('-size_in_bytes',)
         app_label = APP_LABEL
-        verbose_name = 'table'
+        verbose_name = _('table')
+        

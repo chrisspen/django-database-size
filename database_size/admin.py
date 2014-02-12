@@ -3,7 +3,7 @@ from django.contrib import admin
 import models
 import utils
 
-class DatabaseSizeTableAdmin(admin.ModelAdmin):
+class TableAdmin(admin.ModelAdmin):
     
     list_display = (
         #'id',
@@ -34,7 +34,7 @@ class DatabaseSizeTableAdmin(admin.ModelAdmin):
         return False
     
     def get_actions(self, request):
-        actions = super(DatabaseSizeTableAdmin, self).get_actions(request)
+        actions = super(TableAdmin, self).get_actions(request)
         del actions['delete_selected']
         return actions
 
@@ -49,4 +49,4 @@ class DatabaseSizeTableAdmin(admin.ModelAdmin):
     pretty_size.short_description = 'size'
     pretty_size.admin_order_field = 'size_in_bytes'
     
-admin.site.register(models.DatabaseSizeTable, DatabaseSizeTableAdmin)
+admin.site.register(models.Table, TableAdmin)
