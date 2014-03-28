@@ -19,13 +19,15 @@ setup(
             'sql/*.*',
         ],
     },
+    #https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Framework :: Django',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: BSD License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
+        'Programming Language :: PL/SQL',
     ],
     install_requires = ['Django>=1.4'],
 )
