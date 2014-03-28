@@ -39,4 +39,7 @@ class Table(models.Model):
         ordering = ('-size_in_bytes',)
         app_label = APP_LABEL
         verbose_name = _('table')
-        
+    
+    def __unicode__(self):
+        return '%s.%s' % (self.schema_name, self.table_name)
+    
