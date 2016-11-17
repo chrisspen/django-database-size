@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 from django.contrib import admin
 from django.db import connections
 from django.contrib.admin import SimpleListFilter
@@ -17,7 +19,7 @@ class SelectDatabaseListFilter(SimpleListFilter):
         self.parameter_val = None
         try:
             self.parameter_val = request.GET.get(self.parameter_name, self.default_value)
-        except Exception, e:
+        except Exception as e:
             pass
         super(SelectDatabaseListFilter, self).__init__(request, params, model, model_admin)
 
