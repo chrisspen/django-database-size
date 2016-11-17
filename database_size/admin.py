@@ -2,8 +2,8 @@ from django.contrib import admin
 from django.db import connections
 from django.contrib.admin import SimpleListFilter
 
-import models
-import utils
+from database_size import models
+from database_size import utils
 
 class SelectDatabaseListFilter(SimpleListFilter):
     

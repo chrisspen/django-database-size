@@ -1,7 +1,7 @@
 from __future__ import division
 
 # http://code.activestate.com/recipes/577081-humanized-representation-of-a-number-of-bytes/
-def humanize_bytes(bytes, precision=1):
+def humanize_bytes(b, precision=1):
     """Return a humanized string representation of a number of bytes.
 
     Assumes `from __future__ import division`.
@@ -31,9 +31,9 @@ def humanize_bytes(bytes, precision=1):
         (1<<10L, 'kB'),
         (1, 'bytes')
     )
-    if bytes == 1:
+    if b == 1:
         return '1 byte'
     for factor, suffix in abbrevs:
-        if bytes >= factor:
+        if b >= factor:
             break
-    return '%.*f %s' % (precision, bytes / factor, suffix)
+    return '%.*f %s' % (precision, b / factor, suffix) # pylint: disable=undefined-loop-variable

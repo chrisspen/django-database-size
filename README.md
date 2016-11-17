@@ -1,6 +1,8 @@
 django-database-size
 =====================
 
+[<img src="https://secure.travis-ci.org/chrisspen/django-database-size.png?branch=master" alt="Build Status">](https://travis-ci.org/chrisspen/django-database-size)
+
 Adds a page to Django admin that lists the size of all tables in the database.
 
 Installation
