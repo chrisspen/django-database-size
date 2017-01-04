@@ -5,4 +5,4 @@ install:
 -   pip install tox pylint
 script:
 -   ./pep8.sh
-#-   tox
+-   tox
