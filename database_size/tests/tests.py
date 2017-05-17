@@ -27,11 +27,24 @@ warnings.simplefilter('error', RuntimeWarning)
 socket.gethostname = lambda: 'localhost'
 
 class Tests(TestCase):
-    
+
     #fixtures = ['test_jobs.json']
-    
+
     def setUp(self):
         pass
-        
+
     def test_example(self):
-        pass
+        username = 'admin@localhost.com'
+        password = 'password'
+        admin = User.objects.get_or_create(
+            username=username,
+            defaults=dict(
+                is_superuser=True, is_active=True, is_staff=True, email=username))[0]
+        admin.set_password(password)
+        admin.save()
+        c = Client()
+        #c.force_login(admin)
+        ret = c.login(username=username, password=password)
+        self.assertTrue(ret)
+        response = c.get('/admin/database_size/')
+        self.assertEqual(response.status_code, 200)
