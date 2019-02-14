@@ -7,6 +7,7 @@ from django.contrib.admin import SimpleListFilter
 from database_size import models
 from database_size import utils
 
+
 class SelectDatabaseListFilter(SimpleListFilter):
 
     title = 'database'
@@ -46,6 +47,7 @@ class SelectDatabaseListFilter(SimpleListFilter):
         queryset._db = self.parameter_val
         return queryset
 
+
 class TableAdmin(admin.ModelAdmin):
 
     list_display = (
@@ -79,7 +81,8 @@ class TableAdmin(admin.ModelAdmin):
 
     def get_actions(self, request):
         actions = super(TableAdmin, self).get_actions(request)
-        del actions['delete_selected']
+        if 'delete_selected' in actions:
+            del actions['delete_selected']
         return actions
 
     def get_readonly_fields(self, request, obj=None):

@@ -57,7 +57,7 @@ BASE_SECURE_URL = 'https://localhost'
 
 BASE_URL = 'http://localhost'
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

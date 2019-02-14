@@ -1,11 +1,20 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
+from os import path
 from setuptools import setup, find_packages, Command
 
 import database_size
 
 CURRENT_DIR = os.path.abspath(os.path.dirname(__file__))
+
+this_directory = path.abspath(path.dirname(__file__))
+try:
+    with open(path.join(this_directory, 'README.md'), encoding='utf-8') as f:
+        long_description = f.read()
+except TypeError:
+    with open(path.join(this_directory, 'README.md')) as f:
+        long_description = f.read()
 
 def get_reqs(*fns):
     lst = []
@@ -21,6 +30,8 @@ setup(
     name='django-database-size',
     version=database_size.__version__,
     description='Monitor the size of database tables from Django admin.',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     author='Chris Spencer',
     author_email='chrisspen@gmail.com',
     url='http://github.com/chrisspen/django-database-size',
