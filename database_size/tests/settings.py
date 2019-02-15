@@ -27,13 +27,14 @@ MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 
 # Disable migrations.
 # http://stackoverflow.com/a/28560805/247542
-class DisableMigrations(object):
+class DisableMigrations(object): # pylint: disable=bad-option-value,useless-object-inheritance
 
     def __contains__(self, item):
         return True
 
     def __getitem__(self, item):
         return "notmigrations"
+
 #SOUTH_TESTS_MIGRATE = False # Use syncdb <= Django 1.8
 SOUTH_TESTS_MIGRATE = True # Use migrate
 #if django.VERSION > (1, 8, 0): # > Django 1.8
