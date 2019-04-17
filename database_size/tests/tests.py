@@ -28,8 +28,6 @@ socket.gethostname = lambda: 'localhost'
 
 class Tests(TestCase):
 
-    #fixtures = ['test_jobs.json']
-
     def setUp(self):
         pass
 
@@ -48,3 +46,7 @@ class Tests(TestCase):
         self.assertTrue(ret)
         response = c.get('/admin/database_size/')
         self.assertEqual(response.status_code, 200)
+
+    def test_table(self):
+        # Note, this is only empty for Sqlite3.
+        self.assertEqual(models.Table.objects.all().count(), 0)
