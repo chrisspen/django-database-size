@@ -8,8 +8,6 @@ import threading
 from functools import cmp_to_key
 import warnings
 
-import six
-
 import django
 from django.core.management import call_command
 from django.core import mail
@@ -18,6 +16,7 @@ from django.test.client import Client
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.db import connection
 
 from database_size import models
 from database_size import utils
@@ -29,7 +28,9 @@ socket.gethostname = lambda: 'localhost'
 class Tests(TestCase):
 
     def setUp(self):
-        pass
+        with connection.cursor() as cursor:
+            with open('database_size/sql/table.sqlite3.sql') as fin:
+                cursor.execute(fin.read())
 
     def test_example(self):
         username = 'admin@localhost.com'
@@ -49,4 +50,4 @@ class Tests(TestCase):
 
     def test_table(self):
         # Note, this is only empty for Sqlite3.
-        self.assertEqual(models.Table.objects.all().count(), 0)
+        self.assertEqual(models.Table.objects.all().count(), 1)
