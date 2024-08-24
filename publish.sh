@@ -3,7 +3,7 @@
 set -e
 if [ ! -d .env ]; then
     echo "[$(date)] Initializing environment."
-    virtualenv -p python3.9 .env
+    virtualenv -p python3.11 .env
     . .env/bin/activate
     pip install -U pip setuptools wheel
     pip install -r requirements-test.txt

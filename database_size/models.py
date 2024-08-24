@@ -1,7 +1,7 @@
 from __future__ import print_function
 
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 class StringWithTitle(str):
     """
@@ -36,8 +36,6 @@ class Table(models.Model):
 
     class Meta:
         managed = False
-        #db_table = 'database_size_table'
-        #db_table = 'database_size_databasesizetable'
         ordering = ('-size_in_bytes',)
         app_label = APP_LABEL
         verbose_name = _('table')
