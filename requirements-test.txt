@@ -1,3 +1,4 @@
 tox>=2.0.0
 pylint>=1.6.5
-twine
+twine>=1.15.0
+
